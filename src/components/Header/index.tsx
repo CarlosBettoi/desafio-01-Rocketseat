@@ -13,7 +13,7 @@ export function Header () {
 
                 <button>
                   Criar
-                  <AiOutlinePlusCircle/>
+                  <AiOutlinePlusCircle size={20}/>
 
 
                 </button>
