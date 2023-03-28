@@ -1,8 +1,13 @@
 import styles from './task.module.css'
 import {TbTrash} from 'react-icons/tb'
+import { ITask } from '../../App'
 
+interface Props {
+    task: ITask
+    onDelete: (taskId:string) => void;
+}
 
-export function Task() {
+export function Task({task, onDelete}:Props) {
     return (
         <div className={styles.task}>
             <button className={styles.checkContainer}>
@@ -11,11 +16,11 @@ export function Task() {
 
             <p> 
                 
-                Integer urna interdue massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.
+               {task.title}
                 
             </p>
 
-            <button className={styles.deleteButton}>
+            <button className={styles.deleteButton} onClick={() => onDelete(task.id)}>
                 <TbTrash size={20} />
             </button>
 
