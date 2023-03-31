@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Header } from "./components/Header"
 import { Tasks } from "./components/Tasks"
 
@@ -13,6 +13,17 @@ export interface ITask {
 function App() {
  
   const [tasks, setTasks] = useState<ITask[]>([]);
+
+  function loadSavedTask() {
+    const saved = localStorage.getItem(LOCAL_STORRAGE_KEY);
+    if(saved) {
+      setTasks(JSON.parse(saved))
+    }
+  }
+
+  useEffect(() => {
+    loadSavedTask()
+  }, [])
 
   function setTasksAndSave (newTasks:ITask) {
     setTasks(newTasks);
